@@ -18,6 +18,9 @@ set fish_user_abbreviations $fish_user_abbreviations 'gwa=git worktree add'
 set fish_user_abbreviations $fish_user_abbreviations 'sss=sudo systemctl status'
 set fish_user_abbreviations $fish_user_abbreviations 'ssu=sudo systemctl start'
 set fish_user_abbreviations $fish_user_abbreviations 'ssd=sudo systemctl stop'
+set fish_user_abbreviations $fish_user_abbreviations 'trs=trizen -S'
+set fish_user_abbreviations $fish_user_abbreviations 'trq=trizen -Q'
+set fish_user_abbreviations $fish_user_abbreviations 'trr=trizen -R'
 
 set fish_color_command 005fd7
 
@@ -35,18 +38,6 @@ function psg --description 'List processes and grep'
   end
 end
 
-function ssctl --description 'Alias for sudo systemctl'
-  sudo systemctl $argv
-end
-
-function ya --description 'Alias for yaourt'
-  yaourt $argv
-end
-
-function s3 --description 'Alias for subl3'
-  subl3 $argv
-end
-
 function nano --description 'Alias for nano'
   command nano -c $argv
 end
@@ -54,6 +45,3 @@ end
 function dotfiles
   git --git-dir ~/.dotfiles --work-tree ~ $argv
 end
-
-#set fish_function_path $fish_function_path "/usr/lib/python3.5/site-packages/powerline/bindings/fish/"
-#powerline-setup
