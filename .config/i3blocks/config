@@ -105,6 +105,7 @@ label= CPU
 interval=1
 min_width=CPU 100.00%
 separator=false
+command=~/.config/i3blocks/cpu_usage
 
 [disk_io]
 label= HDD

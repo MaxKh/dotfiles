@@ -5,6 +5,7 @@ text/x-python=sublime_text_3.desktop
 text/plain=sublime_text_3.desktop
 application/x-java=userapp-subl3-W57E3X.desktop
 text/csv=libreoffice-calc.desktop
+inode/directory=pcmanfm-qt.desktop
 
 [Added Associations]
 application/msword=libreoffice-writer.desktop;chromium.desktop;

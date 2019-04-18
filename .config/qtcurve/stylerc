@@ -78,7 +78,7 @@ fillProgress=true
 fillSlider=false
 flatSbarButtons=true
 focus=standard
-forceAlternateLvCols=false
+forceAlternateLvCols=true
 gbFactor=0
 gbLabel=4
 glowProgress=none
@@ -178,3 +178,5 @@ windowBorder=0
 windowDrag=3
 xCheck=false
 xbar=true
+
+alternatingRowColors=true

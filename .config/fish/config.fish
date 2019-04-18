@@ -1,6 +1,7 @@
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
 set -U fish_user_abbreviations 'gc=git commit -m ""'
+set fish_user_abbreviations $fish_user_abbreviations 'gca=git commit --amend'
 set fish_user_abbreviations $fish_user_abbreviations 'gco=git checkout'
 set fish_user_abbreviations $fish_user_abbreviations 'gst=git status'
 set fish_user_abbreviations $fish_user_abbreviations 'gstu=git status -uno'

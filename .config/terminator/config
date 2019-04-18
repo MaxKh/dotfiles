@@ -99,6 +99,17 @@
     scrollback_lines = 50000
     use_system_font = False
   [[matte]]
+  [[new]]
+    background_color = "#4c4c4c"
+    background_darkness = 0.86
+    background_type = transparent
+    cursor_color = "#7997e0"
+    exit_action = hold
+    font = Terminus (TTF) Medium 13
+    foreground_color = "#d4d4d4"
+    palette = "#202d1b:#d63940:#91b55d:#eca45b:#7b85ac:#b4539f:#8880a5:#9cb6b7:#698971:#e3536c:#cbb99d:#ffc25f:#c8aeda:#cf6cb1:#ac94be:#e4e4e4"
+    scrollback_lines = 50000
+    use_system_font = False
   [[stayopen]]
     background_darkness = 0.86
     background_type = transparent
