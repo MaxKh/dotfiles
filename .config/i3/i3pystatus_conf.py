@@ -3,6 +3,7 @@ from i3pystatus.cpu_usage import CpuUsage
 from i3pystatus.disk import Disk
 from i3pystatus.mem import Mem
 from i3pystatus.swap import Swap
+from i3pystatus.pulseaudio import PulseAudio
 from i3pystatus import Module
 from i3pystatus.core.util import round_dict
 from threading import Thread
@@ -191,6 +192,19 @@ class PersistOutputModule(Module):
         return rc
 
 
+class MyPulseAudio(PulseAudio):
+    def unmute(self):
+        subprocess.call(['pactl', '--', 'set-sink-mute', self.current_sink, "0"])
+
+    def increase_volume(self):
+        self.unmute()
+        super(MyPulseAudio, self).increase_volume()
+
+    def decrease_volume(self):
+        self.unmute()
+        super(MyPulseAudio, self).decrease_volume()
+
+
 HINTS = {"separator_block_width": 17}
 HINTS_NO_SEP = dict(HINTS, separator=False)
 
@@ -232,7 +246,7 @@ status.register(
         format=" {usage:.2f}%",
         hints=dict(HINTS_NO_SEP, min_width=" 00.00%"),
         on_leftclick=['terminator -e "htop"'],
-        interval=2
+        interval=1
     )
 )
 
@@ -286,9 +300,12 @@ status.register(
     )
 )
 
-status.register("pulseaudio",
-    format="♪ {volume}",
-    format_muted="🔇 MUTE",
-    hints=HINTS)
+status.register(
+    PulseAudio(
+        format=" {volume}",
+        format_muted=" {volume} MUTE",
+        hints=HINTS
+    )
+)
 
 status.run()
