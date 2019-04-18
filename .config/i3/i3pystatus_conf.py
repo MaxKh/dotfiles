@@ -211,7 +211,7 @@ status.register("clock",
 
 status.register("network",
     interface="eth0",
-    format_up=" {bytes_sent}   {bytes_recv} MB/s",
+    format_up=" {bytes_sent:.2f}   {bytes_recv:.2f} MB/s",
     divisor=1024 ** 2,
     color_up="#FFFFFF",
     dynamic_color=False,
@@ -220,7 +220,7 @@ status.register("network",
 
 status.register(
     PersistOutputModule(
-        command='~/.config/i3blocks/disk-io -w 2 -M -P 0 -t 1 -s " "',
+        command='~/.config/i3blocks/disk-io -w 2 -M -P 2 -t 1 -s "   "',
         hints=HINTS_NO_SEP,
         format=" {line}",
         shell=True
@@ -288,6 +288,7 @@ status.register(
 
 status.register("pulseaudio",
     format="♪ {volume}",
+    format_muted="🔇 MUTE",
     hints=HINTS)
 
 status.run()
