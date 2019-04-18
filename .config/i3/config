@@ -93,7 +93,7 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
-exec i3-msg workspace $w1
+exec --no-startup-id i3-msg workspace $w1
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $w1

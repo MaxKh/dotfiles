@@ -213,7 +213,7 @@ status = Status(interval=1)
 status.register(
     PersistOutputModule(
         command='~/.config/i3blocks/kbdd',
-        hints=dict(HINTS, min_width='English (US)'),
+        hints=dict(HINTS, min_width='English (US)  '),
         shell=True
     )
 )

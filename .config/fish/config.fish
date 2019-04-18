@@ -1,29 +1,23 @@
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
-set -U fish_user_abbreviations 'gc=git commit -m ""'
-set fish_user_abbreviations $fish_user_abbreviations 'gca=git commit --amend'
-set fish_user_abbreviations $fish_user_abbreviations 'gco=git checkout'
-set fish_user_abbreviations $fish_user_abbreviations 'gst=git status'
-set fish_user_abbreviations $fish_user_abbreviations 'gstu=git status -uno'
-set fish_user_abbreviations $fish_user_abbreviations 'gb=git branch -a'
-set fish_user_abbreviations $fish_user_abbreviations 'gd=git diff'
-set fish_user_abbreviations $fish_user_abbreviations 'gf=git fetch'
-set fish_user_abbreviations $fish_user_abbreviations 'ga=git add'
-set fish_user_abbreviations $fish_user_abbreviations 'gdt=git difftool -t meld -d'
-set fish_user_abbreviations $fish_user_abbreviations 'gp=git pull'
-set fish_user_abbreviations $fish_user_abbreviations 'gpu=git push'
-set fish_user_abbreviations $fish_user_abbreviations 'gl=git log'
-set fish_user_abbreviations $fish_user_abbreviations 'gcn=git clean -dfxn -e "*.iml" -e ".idea"'
-set fish_user_abbreviations $fish_user_abbreviations 'gwl=git worktree list'
-set fish_user_abbreviations $fish_user_abbreviations 'gwa=git worktree add'
-set fish_user_abbreviations $fish_user_abbreviations 'sss=sudo systemctl status'
-set fish_user_abbreviations $fish_user_abbreviations 'ssu=sudo systemctl start'
-set fish_user_abbreviations $fish_user_abbreviations 'ssd=sudo systemctl stop'
-set fish_user_abbreviations $fish_user_abbreviations 'trs=trizen -S'
-set fish_user_abbreviations $fish_user_abbreviations 'trq=trizen -Q'
-set fish_user_abbreviations $fish_user_abbreviations 'trr=trizen -R'
-set fish_user_abbreviations $fish_user_abbreviations 'drb=docker run --rm -it --entrypoint /bin/bash'
-set fish_user_abbreviations $fish_user_abbreviations 'ocs=docker run --rm -it --entrypoint /bin/bash openshift/origin:v1.5.1'
+abbr -a -g gc git commit -m
+abbr -a -g gca git commit --amend
+abbr -a -g gco git checkout
+abbr -a -g gst git status
+abbr -a -g gstu git status -uno
+abbr -a -g gb git branch -a
+abbr -a -g gd git diff
+abbr -a -g gf git fetch 
+abbr -a -g ga git add
+abbr -a -g gdt git difftool -t meld -d
+abbr -a -g gp git pull
+abbr -a -g gpu git push
+abbr -a -g gl git log
+abbr -a -g gcn git clean -dfxn -e "*.iml" -e ".idea"
+abbr -a -g sss sudo systemctl status
+abbr -a -g ssu sudo systemctl start
+abbr -a -g ssd sudo systemctl stop
+abbr -a -g drb docker run --rm -it --entrypoint /bin/bash
 
 set fish_color_command 005fd7
 
