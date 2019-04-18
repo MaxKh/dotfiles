@@ -42,3 +42,7 @@ end
 function dotfiles
   git --git-dir ~/.dotfiles --work-tree ~ $argv
 end
+
+function __fish_describe_command
+  return
+end
