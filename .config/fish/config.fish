@@ -22,6 +22,8 @@ set fish_user_abbreviations $fish_user_abbreviations 'ssd=sudo systemctl stop'
 set fish_user_abbreviations $fish_user_abbreviations 'trs=trizen -S'
 set fish_user_abbreviations $fish_user_abbreviations 'trq=trizen -Q'
 set fish_user_abbreviations $fish_user_abbreviations 'trr=trizen -R'
+set fish_user_abbreviations $fish_user_abbreviations 'drb=docker run --rm -it --entrypoint /bin/bash'
+set fish_user_abbreviations $fish_user_abbreviations 'ocs=docker run --rm -it --entrypoint /bin/bash openshift/origin:v1.5.1'
 
 set fish_color_command 005fd7
 

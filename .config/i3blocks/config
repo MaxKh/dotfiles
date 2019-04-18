@@ -33,7 +33,7 @@ markup=pango
 label=♪
 instance=Master
 interval=once
-command=~/.config/i3blocks/volume
+command=(test $BLOCK_BUTTON == "1" && i3-msg -q exec pavucontrol); /usr/lib/i3blocks/volume
 signal=10
 
 # Memory usage
@@ -57,21 +57,21 @@ interval=30
 [disk]
 label= ROOT
 instance=/
-command=~/.config/i3blocks/disk
+command=(test $BLOCK_BUTTON == "1" && i3-msg -q exec pcmanfm-qt /); /usr/lib/i3blocks/disk
 separator=false
 interval=30
 
 [disk]
 label= WORKDIR
 instance=/workdir
-command=~/.config/i3blocks/disk
+command=(test $BLOCK_BUTTON == "1" && i3-msg -q exec pcmanfm-qt /workdir); /usr/lib/i3blocks/disk
 separator=false
 interval=30
 
 [disk]
 label= HOME
 instance=/home/khaberev
-command=~/.config/i3blocks/disk
+command=(test $BLOCK_BUTTON == "1" && i3-msg -q exec pcmanfm-qt /home/khaberev); /usr/lib/i3blocks/disk
 interval=30
 
 
@@ -103,29 +103,29 @@ interval=5
 [cpu_usage]
 label= CPU
 interval=1
-min_width=CPU 100.00%
-separator=false
-command=~/.config/i3blocks/cpu_usage
+min_width="CPU 999.99%"
+command=(test $BLOCK_BUTTON == "1" && i3-msg -q exec 'terminator -e "htop"'); /usr/lib/i3blocks/cpu_usage
 
 [disk_io]
 label= HDD
 interval=persist
+min_width="HDD 100/100 MB/s"
 command=~/.config/i3blocks/disk-io -w 3 -M -P 0 -t 1
 
 # Battery indicator
 #
 # The battery instance defaults to 0.
-[battery]
-label=BAT
+#[battery]
+#label=BAT
 #label=⚡
 #instance=1
-interval=30
+#interval=30
 
 # Date Time
 #
 [time]
 label=
-command=~/.config/i3blocks/calendar
+command=(test $BLOCK_BUTTON == "1" && i3-msg -q exec gsimplecal); date '+%Y-%m-%d %H:%M:%S'
 interval=1
 
 [kbdd]

@@ -10,6 +10,7 @@ use strict;
 use warnings;
 use utf8;
 use Getopt::Long;
+use POSIX;
 # use Env;
 
 # default values
@@ -17,11 +18,25 @@ my $t_warn = 50;
 my $t_crit = 80;
 my $cpu_usage = -1;
 
+if ($ENV{"BLOCK_BUTTON"} == "1" ) {
+    htop();
+}
+
 sub help {
     print "Usage: cpu_usage [-w <warning>] [-c <critical>]\n";
     print "-w <percent>: warning threshold to become yellow\n";
     print "-c <percent>: critical threshold to become red\n";
     exit 0;
+}
+
+sub htop
+{
+    fork and exit;
+    POSIX::setsid();
+    fork and exit;
+    umask 0;
+    chdir '/';
+    exec "terminator -m --command 'htop'";
 }
 
 # Env::import();
@@ -53,10 +68,6 @@ if ($cpu_usage >= $t_crit) {
     exit 33;
 } elsif ($cpu_usage >= $t_warn) {
     print "#FFFC00\n";
-}
-
-if ($ENV{"BLOCK_BUTTON"} == "1" ) {
-    exec "terminator -m --command 'htop'"
 }
 
 exit 0;

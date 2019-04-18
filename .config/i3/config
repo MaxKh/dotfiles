@@ -11,7 +11,7 @@
 
 set $mod Mod4
 
-font pango:play 9
+font pango:Play 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -76,8 +76,8 @@ bindsym $mod+button3 floating toggle, resize set 900 500, move position center;
 
 set $w1 1:  term
 set $w2 2:  www
-set $w3 3:  python
-set $w4 4:  java
+set $w3 3:  python
+set $w4 4:  java
 set $w5 5:  DB
 set $w6 6:  docker
 
@@ -118,12 +118,14 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # finds out, if available)
 bar {
         position top
-        font pango:Font Awesome, Play 9
-        status_command i3blocks
+        font pango:Awesome, Play 9
+        #status_command i3blocks
+        status_command python ~/.config/i3/i3pystatus_conf.py
 
     colors {
         background #000000
         statusline #ffffff
+        separator #ffffff
 
         focused_workspace  #ffffff #285577
         active_workspace   #ffffff #333333
@@ -140,11 +142,14 @@ for_window [class="mpv"] floating enable
 for_window [class="Pavucontrol"] floating enable, resize set 800 400;
 assign [class="jetbrains-pycharm-ce"] $w3
 assign [class="jetbrains-idea-ce"] $w4
+for_window[class="jetbrains-idea-ce" title="Confirm Exit"] floating enable
+for_window[class="jetbrains-pycharm-ce" title="Confirm Exit"] floating enable
+
 
 bindsym $mod+Pause exec --no-startup-id i3lock -i ~/img/wallhaven-84638.png
 bindsym $mod+Ctrl+w exec chromium
 bindsym $mod+Ctrl+e exec subl3 -n
-bindsym $mod+Ctrl+f exec thunar
+bindsym $mod+Ctrl+f exec pcmanfm-qt
 bindsym $mod+z exec --no-startup-id "rofi -show keys -modi keys -theme ~/.config/rofi/config.theme -display-keys 'KB Shortcut: '"
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,run -show combi -modi combi -theme ~/.config/rofi/config.theme -display-combi 'Run/Switch to: '"
 
