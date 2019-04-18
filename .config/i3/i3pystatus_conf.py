@@ -227,6 +227,7 @@ status.register("network",
     interface="eth0",
     format_up=" {bytes_sent:.2f}   {bytes_recv:.2f} MB/s",
     divisor=1024 ** 2,
+    round_size=2,
     color_up="#FFFFFF",
     dynamic_color=False,
     hints=HINTS)

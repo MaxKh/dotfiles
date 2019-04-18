@@ -72,6 +72,10 @@ function fish_prompt --description 'Write out the prompt'
 	printf ' in '
 	set_color $fish_color_cwd
 	printf '%s' (echo $PWD | sed -e "s|^$HOME|~|")
+	if test $SSH_TTY
+		set_color red
+		printf ' at SSH %s %s' (hostname) (ip -f inet addr show eth0 | awk '/inet / {print $2}')
+	end
 	set_color normal
 
 	# Line 2
