@@ -1,0 +1,111 @@
+[global_config]
+  enabled_plugins = CustomCommandsMenu, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
+  handle_size = 2
+  inactive_color_offset = 0.39
+  title_font = Terminus (TTF) Medium 13
+  title_inactive_bg_color = "#3e4277"
+  title_receive_bg_color = "#357e2f"
+  title_transmit_bg_color = "#753474"
+  title_use_system_font = False
+[keybindings]
+  go_down = None
+  go_left = None
+  go_right = None
+  go_up = None
+  help = None
+  reset = <Primary><Shift>r
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+  [[drop]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+  [[CustomCommandsMenu]]
+    [[[B_all]]]
+      command = broadcast_all
+      enabled = True
+      name = B_all
+    [[[B_off]]]
+      command = broadcast_off
+      enabled = True
+      name = B_off
+[profiles]
+  [[default]]
+    background_darkness = 0.86
+    cursor_color = "#7997e0"
+    font = Terminus (TTF) Medium 13
+    foreground_color = "#ffffff"
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    scrollback_lines = 100000
+    use_system_font = False
+  [[Afterglow]]
+    background_color = "#212121"
+    cursor_color = "#e75e5e"
+    font = Terminus (TTF) Medium 13
+    foreground_color = "#d0d0d0"
+    palette = "#151515:#ac4142:#7e8e50:#e5b567:#6c99bb:#9f4e85:#7dd6cf:#d0d0d0:#505050:#ac4142:#7e8e50:#e5b567:#6c99bb:#9f4e85:#7dd6cf:#f5f5f5"
+    use_system_font = False
+  [[Broadcast]]
+    background_color = "#2b2b2b"
+    cursor_color = "#ffffff"
+    foreground_color = "#e6e1dc"
+    palette = "#000000:#da4939:#519f50:#ffd24a:#6d9cbe:#d0d0ff:#6e9cbe:#ffffff:#323232:#ff7b6b:#83d182:#ffff7c:#9fcef0:#ffffff:#a0cef0:#ffffff"
+  [[DimmedMonokai]]
+    background_color = "#1f1f1f"
+    cursor_color = "#f83e19"
+    foreground_color = "#b9bcba"
+    palette = "#3a3d43:#be3f48:#879a3b:#c5a635:#4f76a1:#855c8d:#578fa4:#b9bcba:#888987:#fb001f:#0f722f:#c47033:#186de3:#fb0067:#2e706d:#fdffb9"
+  [[Earthsong]]
+    background_color = "#292520"
+    cursor_color = "#f6f7ec"
+    foreground_color = "#e5c7a9"
+    palette = "#121418:#c94234:#85c54c:#f5ae2e:#1398b9:#d0633d:#509552:#e5c6aa:#675f54:#ff645a:#98e036:#e0d561:#5fdaff:#ff9269:#84f088:#f6f7ec"
+  [[Elemental]]
+    background_color = "#22211d"
+    cursor_color = "#facb80"
+    foreground_color = "#807a74"
+    palette = "#3c3c30:#98290f:#479a43:#7f7111:#497f7d:#7f4e2f:#387f58:#807974:#555445:#e0502a:#61e070:#d69927:#79d9d9:#cd7c54:#59d599:#fff1e9"
+  [[Neutron]]
+    background_color = "#1c1e22"
+    cursor_color = "#f6f7ec"
+    font = Terminus (TTF) Medium 13
+    foreground_color = "#e6e8ef"
+    palette = "#23252b:#b54036:#5ab977:#deb566:#6a7c93:#a4799d:#3f94a8:#e6e8ef:#23252b:#b54036:#5ab977:#deb566:#6a7c93:#a4799d:#3f94a8:#ebedf2"
+    use_system_font = False
+  [[New Profile]]
+  [[SpaceGray Eighties]]
+    background_color = "#222222"
+    cursor_color = "#bbbbbb"
+    foreground_color = "#bdbaae"
+    palette = "#15171c:#ec5f67:#81a764:#fec254:#5486c0:#bf83c1:#57c2c1:#efece7:#555555:#ff6973:#93d493:#ffd256:#4d84d1:#ff55ff:#83e9e4:#ffffff"
+  [[default-base16]]
+    background_darkness = 0.86
+    cursor_color = "#d3d0c8"
+    font = Terminus (TTF) Medium 13
+    foreground_color = "#d3d0c8"
+    palette = "#2d2d2d:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#d3d0c8:#747369:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#f2f0ec"
+    scrollback_lines = 50000
+    use_system_font = False
+  [[matte]]
+  [[stayopen]]
+    background_darkness = 0.86
+    background_type = transparent
+    cursor_color = "#7997e0"
+    exit_action = hold
+    font = Terminus (TTF) Medium 13
+    foreground_color = "#ffffff"
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    scrollback_lines = 50000
+    use_system_font = False
