@@ -33,6 +33,7 @@ markup=pango
 label=♪
 instance=Master
 interval=once
+command=~/.config/i3blocks/volume
 signal=10
 
 # Memory usage
@@ -102,7 +103,7 @@ interval=5
 [cpu_usage]
 label= CPU
 interval=1
-min_width=CPU: 100.00%
+min_width=CPU 100.00%
 separator=false
 
 [disk_io]
@@ -127,5 +128,6 @@ command=~/.config/i3blocks/calendar
 interval=1
 
 [kbdd]
+min_width=English (US)
 command=~/.config/i3blocks/kbdd
 interval=persist

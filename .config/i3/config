@@ -28,6 +28,18 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+
+# jump left-right
+bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Ctrl+Right workspace next
+
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
@@ -59,6 +71,8 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+
+bindsym $mod+button3 floating toggle, resize set 900 500, move position center;
 
 set $w1 1:  term
 set $w2 2:  www
@@ -123,6 +137,9 @@ client.unfocused        #333333 #1A1A1A #b0b0b0 #292d2e
 focus_follows_mouse no
 workspace_layout tabbed
 for_window [class="mpv"] floating enable
+for_window [class="Pavucontrol"] floating enable, resize set 800 400;
+assign [class="jetbrains-pycharm-ce"] $w3
+assign [class="jetbrains-idea-ce"] $w4
 
 bindsym $mod+Pause exec --no-startup-id i3lock -i ~/img/wallhaven-84638.png
 bindsym $mod+Ctrl+w exec chromium
