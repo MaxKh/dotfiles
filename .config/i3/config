@@ -126,7 +126,7 @@ for_window [class="mpv"] floating enable
 
 bindsym $mod+Pause exec --no-startup-id i3lock -i ~/img/wallhaven-84638.png
 bindsym $mod+Ctrl+w exec chromium
-bindsym $mod+Ctrl+e exec subl3
+bindsym $mod+Ctrl+e exec subl3 -n
 bindsym $mod+Ctrl+f exec thunar
 bindsym $mod+z exec --no-startup-id "rofi -show keys -modi keys -theme ~/.config/rofi/config.theme -display-keys 'KB Shortcut: '"
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,run -show combi -modi combi -theme ~/.config/rofi/config.theme -display-combi 'Run/Switch to: '"
