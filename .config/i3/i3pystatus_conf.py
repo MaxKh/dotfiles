@@ -10,6 +10,9 @@ from threading import Thread
 import subprocess
 import os
 import sys
+import psutil
+import re
+
 
 class MyCpuUsage(CpuUsage):
     color = "#FFFFFF"
@@ -80,6 +83,7 @@ class MyDiskUsage(Disk, FormatSwitcher):
     alert_color = "#FF0000"
     percentage_alert_limit = 30
     percentage_critical_limit = 10
+    regex = re.compile(r'.*Device size:\s*(\d*).*Free \(estimated\):\s*(\d*).*', re.DOTALL)
 
     settings = (
         ('formats', '')
@@ -90,6 +94,20 @@ class MyDiskUsage(Disk, FormatSwitcher):
         self.format=self.formats[0]
         self.on_rightclick="next_format"
 
+    @staticmethod
+    def _get_fs_type(path):
+        bestMatch = ''
+        fsType = ''
+        for part in psutil.disk_partitions():
+            if path.startswith(part.mountpoint) and len(bestMatch) < len(part.mountpoint):
+                fsType = part.fstype
+                bestMatch = part.mountpoint
+        return fsType
+
+    @staticmethod
+    def _get_btrfs_usage(path):
+        return str(subprocess.check_output(['btrfs',  'filesystem', 'usage', '-b', path], universal_newlines=True))
+
     def run(self):
         if os.path.isdir(self.path) and not os.path.ismount(self.path):
             if len(os.listdir(self.path)) == 0:
@@ -98,12 +116,42 @@ class MyDiskUsage(Disk, FormatSwitcher):
 
         try:
             stat = os.statvfs(self.path)
-        except Exception:
+
+            if self._get_fs_type(self.path) != 'btrfs':
+                available = (stat.f_bsize * stat.f_bavail) / self.divisor
+                percentage_avail = stat.f_bavail / stat.f_blocks * 100
+
+                cdict = {
+                    "total": (stat.f_bsize * stat.f_blocks) / self.divisor,
+                    "free": (stat.f_bsize * stat.f_bfree) / self.divisor,
+                    "avail": available,
+                    "used": (stat.f_bsize * (stat.f_blocks - stat.f_bfree)) / self.divisor,
+                    "percentage_free": stat.f_bfree / stat.f_blocks * 100,
+                    "percentage_avail": percentage_avail,
+                    "percentage_used": (stat.f_blocks - stat.f_bfree) / stat.f_blocks * 100,
+                }
+
+            else:
+                btrfs_usage = self._get_btrfs_usage(self.path)
+                match = self.regex.findall(btrfs_usage)
+                total_bytes = int(match[0][0])
+                free_estimated = int(match[0][1])
+                available = free_estimated / self.divisor
+                percentage_avail = (total_bytes - free_estimated) / total_bytes * 100
+
+                cdict = {
+                    "total": total_bytes / self.divisor,
+                    "free": 0,
+                    "avail": available,
+                    "used": (total_bytes - free_estimated) / self.divisor,
+                    "percentage_free": 0,
+                    "percentage_avail": percentage_avail,
+                    "percentage_used": 100 - percentage_avail,
+                }
+
+        except Exception as ex:
             self.not_mounted()
             return
-
-        available = (stat.f_bsize * stat.f_bavail) / self.divisor
-        percentage_avail = stat.f_bavail / stat.f_blocks * 100
 
         if available > self.display_limit:
             self.output = {}
@@ -119,15 +167,6 @@ class MyDiskUsage(Disk, FormatSwitcher):
             else:
                 color = self.color
 
-        cdict = {
-            "total": (stat.f_bsize * stat.f_blocks) / self.divisor,
-            "free": (stat.f_bsize * stat.f_bfree) / self.divisor,
-            "avail": available,
-            "used": (stat.f_bsize * (stat.f_blocks - stat.f_bfree)) / self.divisor,
-            "percentage_free": stat.f_bfree / stat.f_blocks * 100,
-            "percentage_avail": percentage_avail,
-            "percentage_used": (stat.f_blocks - stat.f_bfree) / stat.f_blocks * 100,
-        }
         round_dict(cdict, self.round_size)
 
         self.data = cdict
@@ -230,6 +269,7 @@ status.register("network",
     round_size=2,
     color_up="#FFFFFF",
     dynamic_color=False,
+    on_leftclick=['wicd-client -n'],
     hints=HINTS)
 
 
