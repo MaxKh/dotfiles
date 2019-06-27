@@ -139,7 +139,8 @@ client.unfocused        #333333 #1A1A1A #b0b0b0 #292d2e
 focus_follows_mouse no
 workspace_layout tabbed
 for_window [class="mpv"] floating enable
-for_window [class="Pavucontrol"] floating enable, resize set 800 400;
+for_window [class="Pavucontrol"] floating enable, resize set 800 400
+for_window [class="Wicd-client.py"] floating enable
 assign [class="jetbrains-pycharm-ce"] $w3
 assign [class="jetbrains-idea-ce"] $w4
 for_window[class="jetbrains-idea-ce" title="Confirm Exit"] floating enable

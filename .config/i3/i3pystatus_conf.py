@@ -14,12 +14,34 @@ import psutil
 import re
 
 
-class MyCpuUsage(CpuUsage):
+class FormatSwitcher(object):
+    formats = [""]
+    indx = 0
+
+    def next_format(self):
+        self.indx = (self.indx + 1) % len(self.formats)
+        self.format = self.formats[self.indx]
+        try:
+            self.send_output()
+        except Exception as ex:
+            pass
+
+
+class MyCpuUsage(CpuUsage, FormatSwitcher):
+    settings = (
+        ('formats', '')
+    )
     color = "#FFFFFF"
     warn_color = "#FFFF00"
     alert_color = "#FF0000"
     warn_percentage = 50
     alert_percentage = 80
+    exclude_average = True
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.format=self.formats[0]
+        self.on_rightclick="next_format"
 
     def run(self):
         usage = self.get_usage()
@@ -52,19 +74,6 @@ class MyCpuUsage(CpuUsage):
             return 0.0
         else:
             return diff_busy / diff_total * 100
-
-
-class FormatSwitcher(object):
-    formats = [""]
-    indx = 0
-
-    def next_format(self):
-        self.indx = (self.indx + 1) % len(self.formats)
-        self.format = self.formats[self.indx]
-        try:
-            self.send_output()
-        except Exception as ex:
-            pass
 
 
 class MyMemUsage(Mem, FormatSwitcher):
@@ -284,7 +293,9 @@ status.register(
 
 status.register(
     MyCpuUsage(
-        format=" {usage:.2f}%",
+        # format=" {usage:.2f}%",
+        format_all="{usage:.2f} ",
+        formats=[" {usage:.2f}%", " {usage_all}"],
         hints=dict(HINTS_NO_SEP, min_width=" 00.00%"),
         on_leftclick=['terminator -e "htop"'],
         interval=1

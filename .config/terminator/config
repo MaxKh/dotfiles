@@ -47,7 +47,7 @@
     cursor_color = "#7997e0"
     font = Terminus (TTF) Medium 13
     foreground_color = "#ffffff"
-    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    palette = "#555753:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#888a85:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
     scrollback_lines = 100000
     use_system_font = False
   [[Afterglow]]
@@ -99,6 +99,7 @@
     scrollback_lines = 50000
     use_system_font = False
   [[matte]]
+    cursor_color = "#aaaaaa"
   [[new]]
     background_color = "#4c4c4c"
     background_darkness = 0.86

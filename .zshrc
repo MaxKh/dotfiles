@@ -21,6 +21,7 @@ zstyle ':completion:*' menu select
 
 autoload -Uz compinit
 compinit
+setopt magicequalsubst
 # End of lines added by compinstall
 
 source <(antibody init)
