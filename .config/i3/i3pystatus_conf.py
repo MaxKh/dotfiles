@@ -334,7 +334,7 @@ status.register(
 
 status.register(
     MySwapUsage(
-        formats=[" SWAP {free} GB", " SWAP {free} GB free of {total} GB"],
+        formats=[" SWAP {free} GB", " SWAP {free} GB free of {total} GB"],
         divisor=1024 ** 3,
         color='#FFFFFF',
         hints=HINTS,
@@ -347,7 +347,7 @@ status.register(
         color='#FFFFFF',
         hints=HINTS_NO_SEP,
         interval=10,
-        formats=[" MEM {avail_mem} GB", " MEM {avail_mem} GB free of {total_mem} GB"],
+        formats=[" RAM {avail_mem} GB", " RAM {avail_mem} GB free of {total_mem} GB"],
         divisor=1024**3
     )
 )

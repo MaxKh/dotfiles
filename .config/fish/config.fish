@@ -22,11 +22,13 @@ abbr -a -g drb docker run --rm -it --entrypoint /bin/bash
 set fish_color_command 005fd7
 
 function ll --description 'List contents of directory using long format'
-  ls --group-directories-first -lh $argv
+  set -lx EXA_COLORS da=36
+  exa -lhg --group-directories-first --time-style=long-iso $argv
 end
 
 function la --description 'List contents of directory using long format'
-  ls --group-directories-first -lah $argv
+  set -lx EXA_COLORS da=36
+  exa -lahg --group-directories-first --time-style=long-iso $argv
 end
 
 function psg --description 'List processes and grep'
