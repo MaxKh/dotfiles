@@ -63,3 +63,4 @@ application/javascript=sublime_text_3.desktop;
 text/x-python3=sublime_text_3.desktop;
 application/x-theme=sublime_text_3.desktop;
 application/x-zstd-compressed-tar=engrampa.desktop;
+text/markdown=chromium.desktop;

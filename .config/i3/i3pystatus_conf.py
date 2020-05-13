@@ -269,23 +269,24 @@ status.register(
 status.register("clock",
     on_leftclick=["gsimplecal"],
     format=" %a %-d %b %X",
-    hints=HINTS)
+    hints=dict(HINTS, min_width="0"*15)
+)
 
 status.register("network",
     interface="eth0",
-    format_up=" {bytes_sent:.2f}   {bytes_recv:.2f} MB/s",
+    format_up=" {bytes_sent}   {bytes_recv} MB/s",
     divisor=1024 ** 2,
     round_size=2,
     color_up="#FFFFFF",
     dynamic_color=False,
     on_leftclick=['wicd-client -n'],
-    hints=HINTS)
+    hints=dict(HINTS, min_width="0"*16))
 
 
 status.register(
     PersistOutputModule(
         command='~/.config/i3blocks/disk-io -w 2 -M -P 2 -t 1 -s "   "',
-        hints=HINTS_NO_SEP,
+        hints=dict(HINTS_NO_SEP, min_width="0"*16),
         format=" {line}",
         shell=True
     )
@@ -308,7 +309,7 @@ status.register(
         on_leftclick=["pcmanfm-qt ~"],
         hints=HINTS,
         interval=10,
-        formats=[" HOME {avail} GB", " HOME {avail} GB free of {total} GB"]
+        formats=[" Home {avail} GB", " Home {avail} GB free of {total} GB"]
     )
 )
 
@@ -318,7 +319,7 @@ status.register(
         on_leftclick=["pcmanfm-qt /workdir"],
         hints=HINTS_NO_SEP,
         interval=10,
-        formats=[" WORKDIR {avail} GB", " WORKDIR {avail} GB free of {total} GB"]
+        formats=[" Workdir {avail} GB", " Workdir {avail} GB free of {total} GB"]
     )
 )
 
@@ -328,13 +329,13 @@ status.register(
         on_leftclick=["pcmanfm-qt /"],
         hints=HINTS_NO_SEP,
         interval=10,
-        formats=[" ROOT {avail} GB", " ROOT {avail} GB free of {total} GB"]
+        formats=[" Root {avail} GB", " Root {avail} GB free of {total} GB"]
     )
 )
 
 status.register(
     MySwapUsage(
-        formats=[" SWAP {free} GB", " SWAP {free} GB free of {total} GB"],
+        formats=[" Swap {free} GB", " Swap {free} GB free of {total} GB"],
         divisor=1024 ** 3,
         color='#FFFFFF',
         hints=HINTS,
@@ -347,7 +348,7 @@ status.register(
         color='#FFFFFF',
         hints=HINTS_NO_SEP,
         interval=10,
-        formats=[" RAM {avail_mem} GB", " RAM {avail_mem} GB free of {total_mem} GB"],
+        formats=[" Ram {avail_mem} GB", " Ram {avail_mem} GB free of {total_mem} GB"],
         divisor=1024**3
     )
 )
@@ -355,7 +356,7 @@ status.register(
 status.register(
     PulseAudio(
         format=" {volume}",
-        format_muted=" {volume} MUTE",
+        format_muted=" {volume} Mute",
         hints=HINTS
     )
 )

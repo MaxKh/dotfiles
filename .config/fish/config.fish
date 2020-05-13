@@ -14,6 +14,7 @@ abbr -a -g gp git pull
 abbr -a -g gpu git push
 abbr -a -g gl git log
 abbr -a -g gcn git clean -dfxn -e "*.iml" -e ".idea"
+# abbr -a -g gbs git for-each-ref --sort=committerdate --format="%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))"
 abbr -a -g sss sudo systemctl status
 abbr -a -g ssu sudo systemctl start
 abbr -a -g ssd sudo systemctl stop
@@ -47,4 +48,16 @@ end
 
 function __fish_describe_command
   return
+end
+
+function gbs
+  if count $argv > /dev/null
+    git for-each-ref --sort=committerdate --format="%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))" $argv
+  else
+    git for-each-ref --sort=committerdate --format="%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))" refs/heads
+  end
+end
+
+function ocl
+  oc logs -f --since=1s $argv | tee -a $argv.log
 end

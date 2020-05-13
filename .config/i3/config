@@ -11,7 +11,7 @@
 
 set $mod Mod4
 
-font pango:Play 9
+font pango:TTLakes Medium 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -118,7 +118,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # finds out, if available)
 bar {
         position top
-        font pango:Awesome, Play 9
+        font pango: TTLakes Medium 9
+        #font pango:Awesome, Play 9
         #status_command i3blocks
         status_command python ~/.config/i3/i3pystatus_conf.py
 
@@ -143,8 +144,9 @@ for_window [class="Pavucontrol"] floating enable, resize set 800 400
 for_window [class="Wicd-client.py"] floating enable
 assign [class="jetbrains-pycharm-ce"] $w3
 assign [class="jetbrains-idea-ce"] $w4
-for_window[class="jetbrains-idea-ce" title="Confirm Exit"] floating enable
-for_window[class="jetbrains-pycharm-ce" title="Confirm Exit"] floating enable
+for_window[class="^jetbrains-.+" title="Confirm Exit"] floating enable
+for_window[class=pcmanfm-qt] title_format "%title - PCManFm-Qt"
+#for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
 
 bindsym $mod+Pause exec --no-startup-id i3lock -i ~/img/wallhaven-84638.png
