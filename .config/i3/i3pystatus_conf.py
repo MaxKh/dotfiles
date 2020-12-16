@@ -6,6 +6,7 @@ from i3pystatus.swap import Swap
 from i3pystatus.pulseaudio import PulseAudio
 from i3pystatus import Module
 from i3pystatus.core.util import round_dict
+from i3pystatus.updates import pacman, yay, Updates
 from threading import Thread
 import subprocess
 import os
@@ -102,6 +103,7 @@ class MyDiskUsage(Disk, FormatSwitcher):
         super().__init__(*args, **kwargs)
         self.format=self.formats[0]
         self.on_rightclick="next_format"
+        self._fs_type = self._get_fs_type(self.path)
 
     @staticmethod
     def _get_fs_type(path):
@@ -126,7 +128,7 @@ class MyDiskUsage(Disk, FormatSwitcher):
         try:
             stat = os.statvfs(self.path)
 
-            if self._get_fs_type(self.path) != 'btrfs':
+            if self._fs_type != 'btrfs':
                 available = (stat.f_bsize * stat.f_bavail) / self.divisor
                 percentage_avail = stat.f_bavail / stat.f_blocks * 100
 
@@ -146,14 +148,14 @@ class MyDiskUsage(Disk, FormatSwitcher):
                 total_bytes = int(match[0][0])
                 free_estimated = int(match[0][1])
                 available = free_estimated / self.divisor
-                percentage_avail = (total_bytes - free_estimated) / total_bytes * 100
+                percentage_avail = free_estimated / total_bytes * 100
 
                 cdict = {
                     "total": total_bytes / self.divisor,
-                    "free": 0,
+                    "free": available,
                     "avail": available,
                     "used": (total_bytes - free_estimated) / self.divisor,
-                    "percentage_free": 0,
+                    "percentage_free": percentage_avail,
                     "percentage_avail": percentage_avail,
                     "percentage_used": 100 - percentage_avail,
                 }
@@ -253,6 +255,16 @@ class MyPulseAudio(PulseAudio):
         super(MyPulseAudio, self).decrease_volume()
 
 
+class MyUpdates(Updates):
+    pass
+    # def update_thread(self):
+    #     self.check_updates()
+    #     while True:
+    #         with self.condition:
+    #             _ = self.check_updates() if not self.condition.wait(self.interval) else 0
+
+
+
 HINTS = {"separator_block_width": 17}
 HINTS_NO_SEP = dict(HINTS, separator=False)
 
@@ -265,6 +277,14 @@ status.register(
         shell=True
     )
 )
+
+status.register(MyUpdates(
+    backends=[pacman.Pacman(), yay.Yay()],
+    format=' {count}',
+    format_summary='Available Updates: {count}',
+    color_working='#FFFF00',
+    hints=dict(HINTS)
+))
 
 status.register("clock",
     on_leftclick=["gsimplecal"],

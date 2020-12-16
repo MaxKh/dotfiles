@@ -79,7 +79,7 @@ set $w2 2:  www
 set $w3 3:  python
 set $w4 4:  java
 set $w5 5:  DB
-set $w6 6:  docker
+set $w6 6:  docker
 
 # switch to workspace
 bindsym $mod+1 workspace number $w1
@@ -148,7 +148,7 @@ for_window[class="^jetbrains-.+" title="Confirm Exit"] floating enable
 for_window[class=pcmanfm-qt] title_format "<span foreground='yellow'>%title - PCManFm-Qt</span>"
 for_window[class=Terminator] title_format "<span foreground='orange'>%title</span>"
 for_window[class=Subl3] title_format "<span foreground='#5AE770'>%title</span>"
-#for_window [class="^jetbrains-.+"][window_type=dialog] focus
+for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
 
 bindsym $mod+Pause exec --no-startup-id i3lock -i ~/img/wallhaven-84638.png

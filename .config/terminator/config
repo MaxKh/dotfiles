@@ -1,54 +1,27 @@
 [global_config]
-  enabled_plugins = CustomCommandsMenu, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
   handle_size = 2
-  inactive_color_offset = 0.39
-  title_font = Terminus (TTF) Medium 13
-  title_inactive_bg_color = "#3e4277"
-  title_receive_bg_color = "#357e2f"
   title_transmit_bg_color = "#753474"
+  title_receive_bg_color = "#357e2f"
+  title_inactive_bg_color = "#3e4277"
+  inactive_color_offset = 0.39
+  enabled_plugins = CustomCommandsMenu, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
   title_use_system_font = False
+  title_font = Terminus (TTF) Medium 13
 [keybindings]
+  go_up = None
   go_down = None
   go_left = None
   go_right = None
-  go_up = None
-  help = None
   reset = <Primary><Shift>r
-[layouts]
-  [[default]]
-    [[[child1]]]
-      parent = window0
-      profile = default
-      type = Terminal
-    [[[window0]]]
-      parent = ""
-      type = Window
-  [[drop]]
-    [[[child1]]]
-      parent = window0
-      profile = default
-      type = Terminal
-    [[[window0]]]
-      parent = ""
-      type = Window
-[plugins]
-  [[CustomCommandsMenu]]
-    [[[B_all]]]
-      command = broadcast_all
-      enabled = True
-      name = B_all
-    [[[B_off]]]
-      command = broadcast_off
-      enabled = True
-      name = B_off
+  help = None
 [profiles]
   [[default]]
     background_darkness = 0.86
     cursor_color = "#7997e0"
     font = Terminus (TTF) Medium 13
     foreground_color = "#ffffff"
-    palette = "#555753:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#888a85:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
     scrollback_lines = 100000
+    palette = "#555753:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#888a85:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
     use_system_font = False
   [[Afterglow]]
     background_color = "#212121"
@@ -95,8 +68,8 @@
     cursor_color = "#d3d0c8"
     font = Terminus (TTF) Medium 13
     foreground_color = "#d3d0c8"
-    palette = "#2d2d2d:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#d3d0c8:#747369:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#f2f0ec"
     scrollback_lines = 50000
+    palette = "#2d2d2d:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#d3d0c8:#747369:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#f2f0ec"
     use_system_font = False
   [[matte]]
     cursor_color = "#aaaaaa"
@@ -105,19 +78,46 @@
     background_darkness = 0.86
     background_type = transparent
     cursor_color = "#7997e0"
-    exit_action = hold
     font = Terminus (TTF) Medium 13
     foreground_color = "#d4d4d4"
-    palette = "#202d1b:#d63940:#91b55d:#eca45b:#7b85ac:#b4539f:#8880a5:#9cb6b7:#698971:#e3536c:#cbb99d:#ffc25f:#c8aeda:#cf6cb1:#ac94be:#e4e4e4"
     scrollback_lines = 50000
+    exit_action = hold
+    palette = "#202d1b:#d63940:#91b55d:#eca45b:#7b85ac:#b4539f:#8880a5:#9cb6b7:#698971:#e3536c:#cbb99d:#ffc25f:#c8aeda:#cf6cb1:#ac94be:#e4e4e4"
     use_system_font = False
   [[stayopen]]
     background_darkness = 0.86
     background_type = transparent
     cursor_color = "#7997e0"
-    exit_action = hold
     font = Terminus (TTF) Medium 13
     foreground_color = "#ffffff"
-    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
     scrollback_lines = 50000
+    exit_action = hold
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
     use_system_font = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+  [[drop]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+  [[CustomCommandsMenu]]
+    [[[B_all]]]
+      command = broadcast_all
+      enabled = True
+      name = B_all
+    [[[B_off]]]
+      command = broadcast_off
+      enabled = True
+      name = B_off
