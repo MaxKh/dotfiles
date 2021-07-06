@@ -6,6 +6,7 @@ text/plain=sublime_text_3.desktop
 application/x-java=userapp-subl3-W57E3X.desktop
 text/csv=libreoffice-calc.desktop
 inode/directory=pcmanfm-qt.desktop
+x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
 
 [Added Associations]
 application/msword=libreoffice-writer.desktop;chromium.desktop;

@@ -18,6 +18,7 @@ abbr -a -g gcn git clean -dfxn -e \"\*.iml\" -e \".idea\"
 abbr -a -g sss sudo systemctl status
 abbr -a -g ssu sudo systemctl start
 abbr -a -g ssd sudo systemctl stop
+abbr -a -g ssr sudo systemctl restart
 abbr -a -g drb docker run --rm -it --entrypoint /bin/bash
 
 set fish_color_command 005fd7

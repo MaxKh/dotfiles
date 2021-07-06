@@ -289,7 +289,7 @@ status.register(MyUpdates(
 status.register("clock",
     on_leftclick=["gsimplecal"],
     format=" %a %-d %b %X",
-    hints=dict(HINTS, min_width="0"*15)
+    hints=dict(HINTS, min_width="0"*16)
 )
 
 status.register("network",

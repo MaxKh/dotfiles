@@ -119,7 +119,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bar {
         position top
         font pango: TTLakes Medium 9
-        #font pango:Awesome, Play 9
         #status_command i3blocks
         status_command python ~/.config/i3/i3pystatus_conf.py
 
@@ -144,7 +143,8 @@ for_window [class="Pavucontrol"] floating enable, resize set 800 400
 for_window [class="Wicd-client.py"] floating enable
 assign [class="jetbrains-pycharm-ce"] $w3
 assign [class="jetbrains-idea-ce"] $w4
-for_window[class="^jetbrains-.+" title="Confirm Exit"] floating enable
+for_window[class="^jetbrains-.+" title="Confirm Exit"] floating enable, move position center
+for_window[class="^jetbrains-.+" title="Update Project"] floating enable, move position mouse
 for_window[class=pcmanfm-qt] title_format "<span foreground='yellow'>%title - PCManFm-Qt</span>"
 for_window[class=Terminator] title_format "<span foreground='orange'>%title</span>"
 for_window[class=Subl3] title_format "<span foreground='#5AE770'>%title</span>"
@@ -157,5 +157,5 @@ bindsym $mod+Ctrl+e exec subl3 -n
 bindsym $mod+Ctrl+f exec pcmanfm-qt
 bindsym $mod+z exec --no-startup-id "rofi -show keys -modi keys -theme ~/.config/rofi/config.theme -display-keys 'KB Shortcut: '"
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,'mymenu:~/.config/rofi/projects.py projects.py',drun -show combi -modi combi -theme ~/.config/rofi/config.theme -display-combi 'Run/Switch to: '"
-
+bindsym $mod+slash move position center
 exec --no-startup-id ~/.config/i3/autostart.sh

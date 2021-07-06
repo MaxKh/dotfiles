@@ -1,4 +1,4 @@
-#!/home/khaberev/.config/rofi/rofi-menu/bin/python
+#!/bin/env python
 import rofi_menu
 import os
 
