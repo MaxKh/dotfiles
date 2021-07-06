@@ -1,0 +1,29 @@
+# Maintainer:
+
+pkgname=python-rofi-menu
+_pkgname=rofi-menu
+pkgver=0.5.1
+pkgrel=1
+pkgdesc="Create rofi menus via python"
+arch=('any')
+url="https://pypi.org/project/rofi-menu/"
+license=('MIT')
+depends=('python>=3.6'
+)
+makedepends=('git' 'python-poetry' 'python-setuptools' 'python-black' 'python-isort')
+source=("git+https://github.com/miphreal/python-rofi-menu.git#tag=$pkgver")
+md5sums=('SKIP')
+
+build() {
+    cd "$pkgname"
+    poetry build
+    cd dist/
+    tar xvf "$_pkgname-$pkgver.tar.gz"
+    cd "$_pkgname-$pkgver/"
+    python setup.py build
+}
+
+package() {
+    cd "$srcdir/$pkgname/dist/$_pkgname-$pkgver/"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
