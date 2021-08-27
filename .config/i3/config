@@ -156,6 +156,6 @@ bindsym $mod+Ctrl+w exec chromium
 bindsym $mod+Ctrl+e exec subl3 -n
 bindsym $mod+Ctrl+f exec pcmanfm-qt
 bindsym $mod+z exec --no-startup-id "rofi -show keys -modi keys -theme ~/.config/rofi/config.theme -display-keys 'KB Shortcut: '"
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,'mymenu:~/.config/rofi/projects.py projects.py',drun -show combi -modi combi -theme ~/.config/rofi/config.theme -display-combi 'Run/Switch to: '"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,'mymenu:~/.config/rofi/projects.py','mymenu:~/.config/rofi/commands.py',drun -show combi -modi combi -theme ~/.config/rofi/config.theme -display-combi 'Run/Switch to: '"
 bindsym $mod+slash move position center
 exec --no-startup-id ~/.config/i3/autostart.sh
